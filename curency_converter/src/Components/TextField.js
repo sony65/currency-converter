@@ -1,7 +1,6 @@
 import React from "react";
 
-const TextField = ({text}) => {
-     const defValue = 1;
+const TextField = ({defValue}) => {
     return (
         <div>
             <input
@@ -10,7 +9,6 @@ const TextField = ({text}) => {
                 id='curencyInput'
 
             ></input>
-            <label for='curencyInput'>{text}</label>
         </div>
     );
 };

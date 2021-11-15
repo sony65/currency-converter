@@ -1,6 +1,6 @@
 import React from "react";
 
-const MainCurency = () => {
+const Curency = () => {
     return (
         <select>
             <option value='RUB' selected>RUB</option>
@@ -9,4 +9,4 @@ const MainCurency = () => {
     );
 };
 
-export default MainCurency;
+export default Curency;

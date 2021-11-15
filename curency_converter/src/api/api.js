@@ -20,9 +20,14 @@ const getDataByURL = async (url, params = {}) => {
 export const convert = async (from, to, amount) => {
     const response = await getDataByURL('/convert', {from: from, to: to, amount: amount});
     return response.result;
-}
+};
 
 export const getLatestRates = async (base) => {
     const response = await getDataByURL('/latest', {base: base});
     return response.rates;
-}
+};
+
+export const getAllSymbols = async () => {
+    const response = await getDataByURL('/symbols');
+    return response.symbols;
+};
