@@ -3,7 +3,7 @@ import React from "react";
 const MainCurency = () => {
     return (
         <select>
-            <option value='RUB'>RUB</option>
+            <option value='RUB' selected>RUB</option>
             <option value='USD'>USD</option>
         </select>
     );
