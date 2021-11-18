@@ -3,6 +3,7 @@ import Curency from "../Components/Curency";
 import TextField from '../Components/TextField';
 import { connect } from 'react-redux';
 import { convertFromChange, convertToChange,  convertAmountChange, convertThunk, getCurenciesThunk } from '../store/convertSlice';
+import { Link } from "react-router-dom";
 
 const mapStateToProps = (state) => {
     return {
@@ -55,13 +56,19 @@ const ConverterPage = ({
     }, [convertToChange]);
 
     const onConvertAmountChangeHandler = useCallback((e) => {
-        convertAmountChange(parseFloat(e.target.value));
+        const { value } = e.target;
+        const numberValue = Number(value);
+
+        if (Number.isNaN(numberValue) || numberValue < 0) {
+            return;
+        }
+
+        convertAmountChange(numberValue);
     }, [convertAmountChange])
 
     return (
         <div>
             <TextField
-                type="number"
                 onChange={onConvertAmountChangeHandler}    
                 value={convertAmount}   
             />
@@ -79,6 +86,7 @@ const ConverterPage = ({
                 value={convertTo} 
                 onChange={onConvertToChangeHandler}
             />
+            <Link to='/ExchangeRatesPage'>Текущие курсы валют</Link>
         </div>
     );
 };

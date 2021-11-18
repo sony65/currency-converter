@@ -4,7 +4,9 @@ import { getBaseCurency } from './getBaseCurrency';
 
 const initialState = {
     baseCurency: getBaseCurency(),
-    latestRates: {},
+    latestRates: {
+        [getBaseCurency()]: 1,
+    },
 };
 
 export const getLatestRatesThunk = createAsyncThunk(

@@ -28,7 +28,7 @@ export const getCurenciesThunk = createAsyncThunk(
         const { convert } = thunkAPI.getState();
         const { convertFrom} = convert;
         const newRates = await getLatestRates(convertFrom);
-        return [...Object.keys(newRates), convertFrom];
+        return Object.keys(newRates);
     },
 )
 
