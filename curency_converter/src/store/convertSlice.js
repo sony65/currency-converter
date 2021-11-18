@@ -29,9 +29,12 @@ const convertSlice = createSlice({
             state.convertResult = null;
             state.convertTo = action.payload;
         },
-        convertAmount(state, action) {
+        convertAmountChange(state, action) {
             state.convertResult = null;
             state.convertAmount = action.payload;
         },
     }
 });
+
+export const { convertFromChange, convertToChange, convertAmountChange } = convertSlice.actions;
+export const { reducer: convertReducer  } = convertSlice;
