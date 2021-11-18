@@ -33,7 +33,12 @@ const convertSlice = createSlice({
             state.convertResult = null;
             state.convertAmount = action.payload;
         },
-    }
+    },
+    extraReducers: (builder) => {
+        builder.addCase(convertCurensy.fulfilled, (state, action) => {
+            state.convertResult = action.payload;
+        });
+    },
 });
 
 export const { convertFromChange, convertToChange, convertAmountChange } = convertSlice.actions;
