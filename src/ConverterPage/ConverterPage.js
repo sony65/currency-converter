@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect } from "react";
 import Curency from "../Components/Curency";
 import TextField from '../Components/TextField';
 import { connect } from 'react-redux';
@@ -34,9 +34,11 @@ const ConverterPage = ({
 
     useEffect(() => {
         getCurenciesThunk();
+    }, [getCurenciesThunk]);
 
+    useEffect(() => {
         const handler = (e) => {
-            if (e.code == 'Enter' && convertAmount) {
+            if (e.code === 'Enter' && convertAmount) {
                 convertThunk();
             }
         }
@@ -46,7 +48,7 @@ const ConverterPage = ({
         return () => {
             window.removeEventListener('keydown', handler);
         }
-    }, []);
+    }, [convertThunk, convertAmount]);
 
     const onConvertFromChangeHandler = useCallback((e) => {
         convertFromChange(e.target.value);

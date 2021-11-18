@@ -27,7 +27,7 @@ const ExchangeRatesPage = ({
 
     useEffect(() => {
         getLatestRatesThunk();
-    }, [baseCurency]);
+    }, [baseCurency, getLatestRatesThunk]);
 
     const onBaseCurencyChangeHandler = useCallback((e) => {
         changeBaseCurency(e.target.value);
