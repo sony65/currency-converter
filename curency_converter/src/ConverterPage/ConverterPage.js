@@ -4,6 +4,7 @@ import TextField from '../Components/TextField';
 import { connect } from 'react-redux';
 import { convertFromChange, convertToChange,  convertAmountChange, convertThunk, getCurenciesThunk } from '../store/convertSlice';
 import { Link } from "react-router-dom";
+import classes from './ConverterPage.module.css';
 
 const mapStateToProps = (state) => {
     return {
@@ -67,26 +68,31 @@ const ConverterPage = ({
     }, [convertAmountChange])
 
     return (
-        <div>
-            <TextField
-                onChange={onConvertAmountChangeHandler}    
-                value={convertAmount}   
-            />
-            <Curency 
-                options={curencies} 
-                value={convertFrom} 
-                onChange={onConvertFromChangeHandler}
-            />
-            <TextField 
-                value={convertResult}
-                disabled
-            />
-            <Curency 
-                options={curencies} 
-                value={convertTo} 
-                onChange={onConvertToChangeHandler}
-            />
-            <Link to='/ExchangeRatesPage'>Текущие курсы валют</Link>
+        <div className={classes.ConverterPage}>
+            <div className={classes.Container}>
+                <TextField
+                    onChange={onConvertAmountChangeHandler}    
+                    value={convertAmount}   
+                />
+                <Curency 
+                    options={curencies} 
+                    value={convertFrom} 
+                    onChange={onConvertFromChangeHandler}
+                />
+                <TextField 
+                    value={convertResult}
+                    disabled
+                />
+                <Curency 
+                    options={curencies} 
+                    value={convertTo} 
+                    onChange={onConvertToChangeHandler}
+                />
+            </div>
+            <Link 
+                to='/ExchangeRatesPage'
+                className={classes.Link}
+            >Текущие курсы валют</Link>
         </div>
     );
 };

@@ -4,6 +4,7 @@ import { changeBaseCurency, getLatestRatesThunk } from '../store/curencySlice';
 import Curency from '../Components/Curency';
 import RatesList from "../Components/RatesList";
 import { Link } from "react-router-dom";
+import classes from './ExchangeRatesPage.module.css';
 
 const mapStateToProps = (state) => {
     return {
@@ -33,7 +34,7 @@ const ExchangeRatesPage = ({
     }, [changeBaseCurency]);
 
     return (
-        <div>
+        <div className={classes.ExchangeRatesPage}>
             <Curency 
                 options={Object.keys(latestRates)}
                 value={baseCurency}
@@ -42,7 +43,10 @@ const ExchangeRatesPage = ({
             <RatesList
                 ratesList={latestRates}
             />
-            <Link to='/ConverterPage'>Конвертер валют</Link>
+            <Link 
+                to='/ConverterPage'
+                className={classes.Link}
+            >Конвертер валют</Link>
         </div>
     );
 };

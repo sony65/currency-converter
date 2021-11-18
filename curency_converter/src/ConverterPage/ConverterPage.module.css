@@ -1,0 +1,21 @@
+.ConverterPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    padding: 15px;
+}
+
+.Link {
+    text-decoration: none;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+    padding: 2px;
+}
