@@ -1,30 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getAllSymbols, getLatestRates } from '../api/api';
-
-const defaultCurency = 'RUB';
-
-const langMapToCurency = {
-    'ru-Ru': 'RUB',
-    'ru': 'RUB',
-    'en-US': 'USD',
-    'en': 'USD',
-
-};
-
-const getBaseCurency = () => {
-    return langMapToCurency[navigator.language] ?? defaultCurency;
-}
+import { getLatestRates } from '../api/api';
+import { getBaseCurency } from './getBaseCurrency';
 
 const initialState = {
     baseCurency: getBaseCurency(),
-    curencyList: {},
     latestRates: {},
 };
-
-export const getAllSymbolsList = createAsyncThunk(
-    'curency/getAllSymbolsList',
-    () => getAllSymbols()
-);
 
 export const getLatestRatesThunk = createAsyncThunk(
     'curency/getLatestRates',
@@ -44,9 +25,6 @@ const curencySlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(getAllSymbolsList.fulfilled, (state, action) => {
-            state.curencyList = action.payload;
-        });
         builder.addCase(getLatestRatesThunk.fulfilled, (state, action) => {
             state.latestRates = action.payload;
         });

@@ -1,10 +1,15 @@
-import React from "react";
-
-const Curency = () => {
+import React from 'react';
+const Curency = ({ options, value, onChange }) => {
     return (
-        <select>
-            <option value='RUB' selected>RUB</option>
-            <option value='USD'>USD</option>
+        <select value={value} onChange={onChange}>
+            {options.map((option) => (
+                <option 
+                    key={option} 
+                    value={option} 
+                >
+                    {option}
+                </option>
+            ))}
         </select>
     );
 };

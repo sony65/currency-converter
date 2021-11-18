@@ -1,13 +1,15 @@
 import React from "react";
 
-const TextField = ({defValue}) => {
+const TextField = ({value, type, onChange, onKeyDown, disabled}) => {
     return (
         <div>
             <input
-                type='text'
-                value={defValue}
-                id='curencyInput'
-
+                type={type}
+                value={value}
+                placeholder='1'
+                onChange={onChange}
+                onKeyDown={onKeyDown}
+                disabled={disabled}
             ></input>
         </div>
     );

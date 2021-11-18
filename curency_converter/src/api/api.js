@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const APIkey = '3762d4e26eaa92eeaa9c905ab2b2bc1a';
+const APIkey = '31ab1770-486e-11ec-b69f-8d1e3c986fb7';
 
 const instanse = axios.create({
-    baseURL: 'http://data.fixer.io/api/',
+    baseURL: 'https://freecurrencyapi.net/api/v2',
 });
 
 const getDataByURL = async (url, params = {}) => {
@@ -17,17 +17,7 @@ const getDataByURL = async (url, params = {}) => {
     return response.data;
 };
 
-export const convert = async (from, to, amount) => {
-    const response = await getDataByURL('/convert', {from: from, to: to, amount: amount});
-    return response.result;
-};
-
 export const getLatestRates = async (base) => {
-    const response = await getDataByURL('/latest', {base: base});
-    return response.rates;
-};
-
-export const getAllSymbols = async () => {
-    const response = await getDataByURL('/symbols');
-    return response.symbols;
+    const response = await getDataByURL('/latest', {base_currency: base});
+    return response.data;
 };
